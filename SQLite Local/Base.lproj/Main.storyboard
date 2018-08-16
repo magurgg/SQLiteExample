@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,13 +13,80 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SQLite_Local" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXb-5u-992">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Héroes en SQLite 3" id="eHz-e8-E3c"/>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bzU-ne-agc">
+                                <rect key="frame" x="20" y="84" width="335" height="110"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre el héroe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gY0-r4-M82">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Power ranking" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCp-W0-oe4">
+                                        <rect key="frame" x="0.0" y="40" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTd-rw-vNe">
+                                        <rect key="frame" x="0.0" y="80" width="335" height="30"/>
+                                        <state key="normal" title="Guardar"/>
+                                        <connections>
+                                            <action selector="buttonSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0nq-tZ-XKV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9km-uN-k5h">
+                                <rect key="frame" x="20" y="214" width="335" height="433"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="mhf-GS-Fkc">
+                                        <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mhf-GS-Fkc" id="gI2-Hp-byW">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rdL-cw-leq"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eYB-lY-Mei"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9km-uN-k5h" firstAttribute="top" secondItem="bzU-ne-agc" secondAttribute="bottom" constant="20" id="2Xa-9V-fWC"/>
+                            <constraint firstItem="bzU-ne-agc" firstAttribute="leading" secondItem="9km-uN-k5h" secondAttribute="leading" id="CNz-dH-F20"/>
+                            <constraint firstItem="bzU-ne-agc" firstAttribute="top" secondItem="lXb-5u-992" secondAttribute="bottom" constant="20" id="HTA-hZ-dSL"/>
+                            <constraint firstItem="lXb-5u-992" firstAttribute="centerX" secondItem="bzU-ne-agc" secondAttribute="centerX" id="MXa-FY-tQa"/>
+                            <constraint firstAttribute="bottom" secondItem="9km-uN-k5h" secondAttribute="bottom" constant="20" symbolic="YES" id="N46-7N-ImL"/>
+                            <constraint firstItem="lXb-5u-992" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RFh-cM-zgS"/>
+                            <constraint firstAttribute="trailing" secondItem="lXb-5u-992" secondAttribute="trailing" id="boq-Ya-NNx"/>
+                            <constraint firstItem="bzU-ne-agc" firstAttribute="trailing" secondItem="9km-uN-k5h" secondAttribute="trailing" id="kyR-6q-0Kr"/>
+                            <constraint firstItem="lXb-5u-992" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mgH-ic-IUq"/>
+                            <constraint firstItem="bzU-ne-agc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="n2e-fq-qbV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="tableViewHeroes" destination="9km-uN-k5h" id="j9K-h1-qo0"/>
+                        <outlet property="textFieldName" destination="gY0-r4-M82" id="z2B-iX-oYP"/>
+                        <outlet property="textFieldPowerRanking" destination="jCp-W0-oe4" id="8Jr-oX-4Xe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
